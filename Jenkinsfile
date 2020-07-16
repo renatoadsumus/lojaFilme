@@ -15,7 +15,10 @@ environment {
 		stage('Unit Test'){
 		
 			steps{					
-				
+			
+
+				sh(""" docker ps """)	
+
  				echo "USER: ${USER_ACCOUNT}"
 
 				echo "#####################################"	
