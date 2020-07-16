@@ -45,9 +45,10 @@ environment {
 			steps{	
 				
      
+				sh(""" docker build -t latam/home:latest . """)
 
 				echo "#####################################"
-				echo "CREATE APK FILE"		
+				echo "CREATE DOCKER IMAGE"		
 				echo "#####################################"
 			}		
 		}
