@@ -45,7 +45,8 @@ environment {
 			steps{	
 				
      
-				sh(""" docker build -t latam/home:latest . """)
+				sh(""" docker build -t home . """)
+				sh(""" docker tag home 771519402637.dkr.ecr.us-east-1.amazonaws.com/aplicacao """)
 
 				echo "#####################################"
 				echo "CREATE DOCKER IMAGE"		
