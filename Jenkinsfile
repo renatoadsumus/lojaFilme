@@ -5,7 +5,10 @@ pipeline {
 	        label 'master'
 	    }	    
 	}
-	
+
+environment {
+        USER_ACCOUNT = sh (returnStdout: true, script: 'whoami | tr -d "\n"')
+}	
 
 	stages{  	
 	
@@ -13,7 +16,7 @@ pipeline {
 		
 			steps{					
 				
-          
+ 				echo "USER: ${USER_ACCOUNT}"
 
 				echo "#####################################"	
 				echo "###  UNIT TEST ###"
