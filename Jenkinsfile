@@ -14,12 +14,7 @@ environment {
 	
 		stage('Unit Test'){
 		
-			steps{					
-			
-
-				sh(""" docker ps """)	
-
- 				echo "USER: ${USER_ACCOUNT}"
+			steps{	
 
 				echo "#####################################"	
 				echo "###  UNIT TEST ###"
@@ -42,11 +37,15 @@ environment {
 		
 		stage('Build Image'){
 		
-			steps{	
+			steps{					
 				
-     
+				sh (""" eval \$(aws ecr get-login --region us-east-1 --no-include-email) """)
+				
 				sh(""" docker build -t home . """)
-				sh(""" docker tag home 771519402637.dkr.ecr.us-east-1.amazonaws.com/aplicacao """)
+				
+				sh(""" docker tag home ${env.ID_AWS}.dkr.ecr.us-east-1.amazonaws.com/home """)
+				
+				
 
 				echo "#####################################"
 				echo "CREATE DOCKER IMAGE"		
@@ -58,9 +57,10 @@ environment {
 		
 			steps{	
 
+				sh(""" docker push ${env.ID_AWS}.dkr.ecr.us-east-1.amazonaws.com/home """)
 
 				echo "#####################################"
-				echo "FUNCTIONAL TEST DEVICE FARM"		
+				echo " DEPLOY ECR IMAGE"		
 				echo "#####################################"
 			}		
 		}
@@ -84,4 +84,3 @@ environment {
         }
     }	
 }
-
