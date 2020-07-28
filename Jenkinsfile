@@ -74,7 +74,7 @@ environment {
 				echo "DEPLOY CLUSTER ECS"		
 				echo "#####################################"
 
-				sh (""" aws ecs update-service --cluster \"cluster-devops-latam\" --service \"home-service\" --force-new-deployment """)
+				sh (""" aws ecs update-service --cluster \"cluster-devops-latam\" --service \"home-service\" --force-new-deployment --region us-east-1 """)
 			}		
 		}
 	}
