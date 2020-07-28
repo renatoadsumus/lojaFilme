@@ -65,14 +65,16 @@ environment {
 			}		
 		}
 
-         stage('Deploy ELB'){
+         stage('Deploy ECS'){
 		
 			steps{	
 			
 
 				echo "#####################################"
-				echo "DEPLOY APPCENTER"		
+				echo "DEPLOY CLUSTER ECS"		
 				echo "#####################################"
+
+				sh (""" aws ecs update-service --cluster \"cluster-devops-latam\" --service \"home-service\" --force-new-deployment """)
 			}		
 		}
 	}
