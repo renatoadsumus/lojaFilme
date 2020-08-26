@@ -4,7 +4,7 @@ FROM ubuntu:18.04
 RUN apt-get update && \
  apt-get -y install apache2
 
-COPY index_2.html /var/www/html/index.html
+COPY index.html /var/www/html/index.html
 
 # Configure apache
 RUN echo '. /etc/apache2/envvars' > /root/run_apache.sh && \
